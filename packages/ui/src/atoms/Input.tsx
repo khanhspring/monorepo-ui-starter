@@ -9,7 +9,7 @@ const Input = createPolymorphicComponent<'input', InputProps>(
       {...props}
       ref={ref}
       classNames={{
-        input: "focus:ring focus:ring-brand-500"
+        input: "focus:border-brand-500 focus:ring-1 focus:ring-brand-500 data-[error=true]:ring-red-500",
       }}
     />
   ))

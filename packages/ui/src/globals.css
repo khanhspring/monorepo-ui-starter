@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import '@mantine/core/styles.css';
+
+@source "../src";
+
+@theme {
+  --color-brand-50: #EFF0FD;
+  --color-brand-100: #DEE1FB;
+  --color-brand-200: #C1C6F7;
+  --color-brand-300: #A0A9F3;
+  --color-brand-400: #828EEF;
+  --color-brand-500: #5E71E9;
+  --color-brand-600: #3857E3;
+  --color-brand-700: #2742B3;
+  --color-brand-800: #1B2F86;
+  --color-brand-900: #0D1A52;
+  --color-brand-950: #060F38;
+}
+

@@ -33,4 +33,3 @@ export const Primary: Story = {
     children: 'Button',
   },
 };
-

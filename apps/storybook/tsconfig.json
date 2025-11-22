@@ -1,0 +1,5 @@
+{
+  "extends": "@repo/typescript-config/tsconfig.vite.json",
+  "include": ["src", "vite.config.ts", ".storybook/main.ts", ".storybook/preview.tsx"],
+  "exclude": ["node_modules"]
+}
