@@ -1,6 +1,20 @@
-import {Link} from "@tanstack/react-router";
+import {Link, useNavigate, useRouter} from "@tanstack/react-router";
+import {Button} from "@repo/ui/atoms";
+import {useAuth} from "../../../hooks";
 
 export default function Header() {
+  const router = useRouter();
+  const navigate = useNavigate();
+  const auth = useAuth();
+
+  const handleLogout = () => {
+    auth.logout().then(() => {
+      router.invalidate().finally(async () => {
+        await navigate({ to: '/' })
+      })
+    })
+  }
+
   return (
     <header className="border-b border-gray-200">
       <div className="container mx-auto flex gap-10 items-center py-4 px-5">
@@ -13,7 +27,7 @@ export default function Header() {
           <Link to="/users">Users</Link>
         </div>
         <div>
-          <Link to="/login">Login</Link>
+          <Button onClick={handleLogout} size="xs">Logout</Button>
         </div>
       </div>
     </header>
