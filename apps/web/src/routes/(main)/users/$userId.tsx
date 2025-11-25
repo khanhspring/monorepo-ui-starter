@@ -1,7 +1,7 @@
 import {createFileRoute} from '@tanstack/react-router'
-import UserDetail from "../../../../features/UserDetail";
+import UserDetail from "../../../features/UserDetail";
 
-export const Route = createFileRoute('/(main)/_mainLayout/users/$userId')({
+export const Route = createFileRoute('/(main)/users/$userId')({
   component: UserDetailPage,
 })
 

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/api-client",
+  "name": "@repo/types",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@repo/types": "workspace:*",
-    "axios": "^1.13.2"
+    "@repo/eslint-config": "workspace:*"
   },
   "devDependencies": {
     "eslint": "^9.39.1",

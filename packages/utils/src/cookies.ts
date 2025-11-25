@@ -55,7 +55,7 @@ export function setCookie(
   document.cookie = cookieString
 }
 
-export function getCookie(name: string): string | null {
+export function getCookie(name: string): string | undefined {
   const cookies = document.cookie.split(';')
 
   for (let cookie of cookies) {
@@ -65,7 +65,7 @@ export function getCookie(name: string): string | null {
     }
   }
 
-  return null
+  return undefined
 }
 
 export function getAllCookies(): Record<string, string> {
