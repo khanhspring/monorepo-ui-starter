@@ -20,7 +20,10 @@
     "@repo/eslint-config": "workspace:*",
     "@mantine/core": "^8.3.8",
     "@mantine/hooks": "^8.3.8",
+    "@phosphor-icons/react": "^2.1.10",
     "@tailwindcss/vite": "^4.1.17",
+    "tailwind-merge": "^3.4.0",
+    "tailwind-variants": "^3.2.2",
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {

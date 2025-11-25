@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {ReactNode, useCallback, useEffect, useState} from 'react'
-import {deleteCookie, getCookie, setCookie} from "../lib/utils";
+import {deleteCookie, getCookie, setCookie} from "@repo/utils";
 
 export const ACCESS_TOKEN_KEY = 'access_token';
 
@@ -22,7 +22,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = useCallback(async (accessToken: string) => {
     setCookie(ACCESS_TOKEN_KEY, accessToken);
-    setIsAuthenticated(!!accessToken)
+    setIsAuthenticated(!!accessToken);
   }, [])
 
   useEffect(() => {
