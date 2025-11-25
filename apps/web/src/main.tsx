@@ -25,7 +25,9 @@ const queryClient = new QueryClient();
 const router = createRouter({
   routeTree,
   defaultPreload: 'intent',
-  defaultStaleTime: 5000,
+  // Since we're using React Query, we don't want loader calls to ever be stale
+  // This will ensure that the loader is always called when the route is preloaded or visited
+  defaultPreloadStaleTime: 0,
   scrollRestoration: true,
   context: {
     queryClient,
@@ -42,7 +44,7 @@ declare module '@tanstack/react-router' {
 
 function AppRouter() {
   const auth = useAuth();
-  return <RouterProvider router={router} context={{auth, queryClient}} />
+  return <RouterProvider router={router} context={{auth}} />
 }
 
 createRoot(document.getElementById('root')!).render(

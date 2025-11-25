@@ -8,10 +8,15 @@ export const Route = createFileRoute('/(main)/users/')({
     queryClient.ensureQueryData(usersQueryOptions())
   },
   component: UsersPage,
+  pendingComponent: Pending
 })
 
 function UsersPage() {
   const { data } = useSuspenseQuery(usersQueryOptions());
 
-  return <Users userPage={data} />
+  return <Users userPage={data} />;
+}
+
+function Pending() {
+  return <>Loading...</>;
 }

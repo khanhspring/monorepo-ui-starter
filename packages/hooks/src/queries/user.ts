@@ -1,6 +1,6 @@
 import {queryOptions, useQuery} from "@tanstack/react-query";
 import {Page, Response, User} from "@repo/types";
-import {api} from "../lib/api";
+import {api} from "../lib";
 
 export const usersQueryOptions = () => {
   return queryOptions<Page<User>>({

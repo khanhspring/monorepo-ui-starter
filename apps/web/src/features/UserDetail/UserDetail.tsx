@@ -1,14 +1,12 @@
 import {Link} from "@tanstack/react-router";
-import {useUser} from "@repo/hooks/queries";
 import {Icon} from "@repo/ui/atoms";
+import {User} from "@repo/types";
 
 type Props = {
-  userId: string;
+  user?: User;
 }
 
-export default function UserDetail({ userId }: Props) {
-  const { data } = useUser(userId);
-
+export default function UserDetail({ user }: Props) {
   return (
     <div>
       <div className="flex items-center gap-3">
@@ -18,10 +16,10 @@ export default function UserDetail({ userId }: Props) {
         <h2 className="font-semibold text-lg">User detail</h2>
       </div>
       <div className="mt-5">
-        <p>ID: {userId}</p>
-        <p>Email: {data?.data.email}</p>
-        <p>First name: {data?.data.first_name}</p>
-        <p>Last name: {data?.data.last_name}</p>
+        <p>ID: {user?.id}</p>
+        <p>Email: {user?.email}</p>
+        <p>First name: {user?.first_name}</p>
+        <p>Last name: {user?.last_name}</p>
       </div>
     </div>
   );
