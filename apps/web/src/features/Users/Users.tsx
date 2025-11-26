@@ -1,12 +1,13 @@
-import {Link} from "@tanstack/react-router";
+import {Link, useRouter} from "@tanstack/react-router";
 import {Page, User} from "@repo/types";
-import {ActionIcon, Icon, Table} from "@repo/ui/atoms";
+import {ActionIcon, Button, Icon, Table} from "@repo/ui/atoms";
 
 type Props = {
   userPage?: Page<User>;
 }
 
 export default function Users({ userPage }: Props) {
+    const router = useRouter();
 
   const rows = userPage?.data.map((user, index) => (
     <Table.Tr key={user.id}>
@@ -26,7 +27,13 @@ export default function Users({ userPage }: Props) {
 
   return (
     <div>
-      <h2 className="font-semibold text-lg">Users</h2>
+      <div className="flex items-center justify-between">
+          <h2 className="font-semibold text-lg">Users</h2>
+          <Button size="xs" variant="outline" onClick={() => router.navigate({ to: '/users/create' })}>
+              <Icon name="Plus" size={13} />
+              Add new
+          </Button>
+      </div>
       <div className="py-5 grid gap-3">
         <Table>
           <Table.Thead>
