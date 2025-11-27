@@ -9,3 +9,4 @@ export { default as EmptyState } from './EmptyState';
 export { default as Icon } from './Icon';
 export * from './Icon';
 export { default as UIProvider } from './UIProvider';
+export * from '@mantine/notifications';

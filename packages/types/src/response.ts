@@ -13,3 +13,7 @@ export type Page<T> = {
   total_pages: number,
   data: T[]
 };
+
+export type IdRes<T> = {
+  id: T;
+};

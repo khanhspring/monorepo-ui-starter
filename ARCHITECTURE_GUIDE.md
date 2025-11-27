@@ -13,29 +13,74 @@ This **Monorepo UI Starter** is built with cutting-edge tools and follows indust
 - 📦 **Type Safety**: End-to-end TypeScript with shared type definitions
 - 🔧 **Maintainability**: Consistent linting, formatting, and build configurations
 
+## Key Features
+
+### Modern Stack
+- **React 19** with React Compiler for automatic optimization
+- **Vite 7** for lightning-fast builds and HMR
+- **TypeScript 5.9** with strict type checking
+- **Tailwind CSS v4** for utility-first styling
+
+### Complete Form System
+- **TanStack Form** integration with type-safe form state management
+- Pre-built form components (TextField, SelectField, SubmitButton)
+- Lazy loading for optimal bundle size
+- Automatic validation and error handling
+
+### Data Management
+- **TanStack Query** for server state management
+- Separate packages for queries and mutations
+- Automatic caching and background refetching
+- Optimistic updates support
+
+### Type-Safe Routing
+- **TanStack Router** with file-based routing
+- Auto-generated route tree
+- Protected route groups
+- Type-safe navigation and params
+
+### Component Library
+- **Mantine v8** + **Tailwind v4** hybrid approach
+- Atomic design structure (atoms, molecules, templates)
+- **Storybook** for component documentation
+- **Phosphor Icons** for consistent iconography
+
+### Developer Tools
+- Turborepo for build orchestration
+- pnpm for fast, efficient package management
+- ESLint and Prettier for code quality
+- Type checking across all packages
+
 ## Technology Stack
 
 ### Core Tools
 
-- **[Turborepo](https://turbo.build/repo)**: High-performance build system for JavaScript/TypeScript monorepos
-- **[pnpm](https://pnpm.io/)**: Fast, disk space efficient package manager with excellent monorepo support
-- **[React 19](https://react.dev/)**: Latest version with React Compiler support
-- **[Vite](https://vitejs.dev/)**: Next-generation frontend build tool
-- **[TypeScript 5.9](https://www.typescriptlang.org/)**: Strict type checking across the entire codebase
+- **[Turborepo](https://turbo.build/repo)**: High-performance build system for JavaScript/TypeScript monorepos (v2.6.1)
+- **[pnpm](https://pnpm.io/)**: Fast, disk space efficient package manager with excellent monorepo support (v9.0.0)
+- **[React 19](https://react.dev/)**: Latest version with React Compiler support (v19.2.0)
+- **[Vite 7](https://vitejs.dev/)**: Next-generation frontend build tool (v7.2.4)
+- **[TypeScript 5.9](https://www.typescriptlang.org/)**: Strict type checking across the entire codebase (v5.9.3)
 
 ### UI & Styling
 
-- **[Mantine](https://mantine.dev/)**: Comprehensive React component library
-- **[Tailwind CSS v4](https://tailwindcss.com/)**: Utility-first CSS framework
-- **[Storybook](https://storybook.js.org/)**: Component development and documentation environment
-- **[Phosphor Icons](https://phosphoricons.com/)**: Flexible icon family
+- **[Mantine](https://mantine.dev/)**: Comprehensive React component library (v8.3.8)
+- **[Tailwind CSS v4](https://tailwindcss.com/)**: Utility-first CSS framework (v4.1.17)
+- **[Storybook](https://storybook.js.org/)**: Component development and documentation environment (v10.0.8)
+- **[Phosphor Icons](https://phosphoricons.com/)**: Flexible icon family (v2.1.10)
 
 ### Application Framework
 
-- **[TanStack Router](https://tanstack.com/router)**: Type-safe routing with automatic route generation
-- **[TanStack Query](https://tanstack.com/query)**: Powerful asynchronous state management
-- **[Axios](https://axios-http.com/)**: HTTP client for API requests
-- **[Zod](https://zod.dev/)**: TypeScript-first schema validation
+- **[TanStack Router](https://tanstack.com/router)**: Type-safe routing with automatic route generation (v1.139.1)
+- **[TanStack Query](https://tanstack.com/query)**: Powerful asynchronous state management (v5.90.10)
+- **[TanStack Form](https://tanstack.com/form)**: Headless, type-safe form state management (v1.26.0)
+- **[Axios](https://axios-http.com/)**: HTTP client for API requests (v1.13.2)
+- **[Zod](https://zod.dev/)**: TypeScript-first schema validation (v4.1.12)
+
+### Utility Libraries
+
+- **[tailwind-merge](https://github.com/dcastil/tailwind-merge)**: Efficiently merge Tailwind CSS classes (v3.4.0)
+- **[tailwind-variants](https://www.tailwind-variants.org/)**: Create variant-based component styles (v3.2.2)
+- **[@uidotdev/usehooks](https://usehooks.com/)**: Collection of modern React hooks (v2.4.1)
 
 ## Monorepo Architecture
 
@@ -100,7 +145,8 @@ web/
 │   │   ├── Home/
 │   │   ├── Login/
 │   │   ├── Users/
-│   │   └── AddUser/
+│   │   ├── AddUser/
+│   │   └── UserDetail/
 │   ├── hooks/                     # App-specific hooks
 │   ├── routes/                    # Route definitions
 │   │   ├── __root.tsx
@@ -110,6 +156,9 @@ web/
 │   │       ├── index.tsx
 │   │       ├── route.tsx
 │   │       └── users/
+│   │           ├── index.tsx      # /users
+│   │           ├── create.tsx     # /users/create
+│   │           └── $userId.tsx    # /users/:userId
 │   └── styles/
 │       └── globals.css
 ├── package.json
@@ -143,8 +192,10 @@ storybook/
 │   └── stories/               # Component stories
 │       ├── Button.stories.ts
 │       ├── Input.stories.ts
+│       ├── TextInput.stories.ts
 │       ├── Table.stories.ts
-│       └── EmptyState.stories.tsx
+│       ├── EmptyState.stories.tsx
+│       └── Icons.stories.ts
 └── package.json
 ```
 
@@ -170,6 +221,8 @@ ui/
 │   │   ├── ActionIcon.tsx
 │   │   ├── Button.tsx
 │   │   ├── Input.tsx
+│   │   ├── TextInput.tsx
+│   │   ├── Select.tsx
 │   │   ├── Table.tsx
 │   │   ├── Icon.tsx
 │   │   ├── EmptyState.tsx
@@ -177,7 +230,16 @@ ui/
 │   │   ├── UIProvider.tsx
 │   │   └── index.ts
 │   ├── molecules/            # Composite components
-│   ├── organisms/            # Complex sections
+│   │   ├── Form/            # TanStack Form integration
+│   │   │   ├── components/
+│   │   │   │   ├── FormContainer.tsx
+│   │   │   │   ├── FormTextField.tsx
+│   │   │   │   ├── FormSelectField.tsx
+│   │   │   │   ├── SubmitButton.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── context.tsx
+│   │   │   └── index.ts
+│   │   └── index.ts
 │   └── templates/            # Page templates
 └── package.json
 ```
@@ -206,6 +268,44 @@ const Button = createPolymorphicComponent<'button', ButtonProps>(
 - Easy customization through Tailwind classes
 - Type-safe props with TypeScript
 - Accessible components out of the box (Mantine)
+
+**Form System with TanStack Form:**
+
+The UI package includes a sophisticated form system built on TanStack Form v1.26.0, providing type-safe, headless form state management:
+
+```typescript
+// Form hook creation with field and form components
+import {lazy} from "react";
+import {createFormHook} from "@tanstack/react-form";
+
+const TextField = lazy(() => import('./FormTextField'));
+const SelectField = lazy(() => import('./FormSelectField'));
+const SubmitButton = lazy(() => import('./SubmitButton'))
+
+export const {useAppForm, withForm, withFieldGroup} = createFormHook({
+  fieldComponents: {
+    TextField,
+    SelectField
+  },
+  formComponents: {
+    SubmitButton,
+  },
+  fieldContext,
+  formContext,
+});
+```
+
+**Form Components:**
+- `FormContainer`: Wrapper component for form layout
+- `FormTextField`: Text input field with validation
+- `FormSelectField`: Select dropdown field
+- `SubmitButton`: Form submission button with loading state
+
+This approach provides:
+- Lazy loading for optimal bundle size
+- Type-safe field definitions
+- Automatic validation and error handling
+- Consistent form behavior across the application
 
 ### 4. `packages/api-client` - API Layer
 
@@ -246,19 +346,23 @@ hooks/
 │   ├── lib/                  # Utility hooks
 │   │   ├── api.ts
 │   │   └── index.ts
-│   └── queries/              # TanStack Query hooks
+│   ├── queries/              # TanStack Query hooks
+│   │   ├── index.ts
+│   │   ├── user.ts
+│   │   └── product.ts
+│   └── mutations/            # TanStack Query mutations
 │       ├── index.ts
-│       ├── user.ts
-│       └── product.ts
+│       └── user.ts
 └── package.json
 ```
 
-**Dual Export Strategy:**
+**Multi-path Export Strategy:**
 ```json
 {
   "exports": {
     "./lib": "./src/lib/index.ts",
-    "./queries": "./src/queries/index.ts"
+    "./queries": "./src/queries/index.ts",
+    "./mutations": "./src/mutations/index.ts"
   }
 }
 ```
@@ -266,8 +370,9 @@ hooks/
 **Benefits:**
 - Separation of general hooks from data-fetching hooks
 - Server state management with TanStack Query
-- Consistent data fetching patterns
+- Consistent data fetching patterns (queries) and mutation patterns
 - Automatic caching and refetching
+- Optimistic updates and error handling for mutations
 
 ### 6. `packages/types` - Type Definitions
 
@@ -382,6 +487,9 @@ This simple configuration tells pnpm to treat all directories under `apps/` and 
     "lint": {
       "dependsOn": ["^lint"]
     },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
     "dev": {
       "cache": false,
       "persistent": true
@@ -453,7 +561,12 @@ UI components declare React as a peer dependency:
 Common dependencies use the same version across packages:
 - `typescript`: `~5.9.3` (all packages)
 - `eslint`: `^9.39.1` (all packages)
+- `react` and `react-dom`: `^19.2.0` (web + storybook)
 - `@tanstack/react-query`: `^5.90.10` (web + hooks)
+- `@tanstack/react-form`: `^1.26.0` (web + ui)
+- `vite`: `^7.2.4` (web + storybook + ui)
+- `tailwindcss`: `^4.1.17` (web + ui)
+- `@mantine/core`: `^8.3.8` (ui)
 
 ## Routing Architecture
 
@@ -511,11 +624,25 @@ export const useUsers = () => {
 };
 ```
 
+For data mutations:
+```typescript
+// In @repo/hooks/mutations/user.ts
+export const useCreateUser = () => {
+  return useMutation({
+    mutationFn: (data: CreateUserData) => apiClient.users.create(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+    }
+  });
+};
+```
+
 **Benefits:**
 - Automatic caching
 - Background refetching
 - Optimistic updates
 - Loading/error states
+- Automatic query invalidation after mutations
 
 ### 2. Authentication State (Context)
 
@@ -556,6 +683,9 @@ pnpm build
 
 # Lint everything
 pnpm lint
+
+# Type check all packages
+pnpm check-types
 
 # Format code
 pnpm format
@@ -603,20 +733,38 @@ mkdir apps/new-app
 
 **Named Exports for Atoms:**
 ```typescript
-// @repo/ui/atoms
-export { Button } from './Button';
-export { Input } from './Input';
+// @repo/ui/atoms/index.ts
+export { default as Button } from './Button';
+export { default as Input } from './Input';
+export { default as TextInput } from './TextInput';
+export { default as Select } from './Select';
+export { default as Table } from './Table';
+export { default as EmptyState } from './EmptyState';
+export { default as Icon } from './Icon';
+export * from './Icon';
 ```
 
 **Sub-path Exports for Categories:**
 ```json
 {
   "exports": {
+    "./globals.css": "./src/globals.css",
     "./atoms": "./src/atoms/index.ts",
-    "./molecules": "./src/molecules/index.ts",
-    "./globals.css": "./src/globals.css"
+    "./molecules": "./src/molecules/index.ts"
   }
 }
+```
+
+**Usage in Applications:**
+```typescript
+// Import atoms
+import { Button, Input, Select } from '@repo/ui/atoms';
+
+// Import molecules (Form components)
+import { FormContainer, useAppForm } from '@repo/ui/molecules';
+
+// Import global styles
+import '@repo/ui/globals.css';
 ```
 
 ### 3. Type Safety
@@ -806,19 +954,22 @@ Whether you're starting a new project or migrating an existing one, this archite
 - **pnpm Workspaces**: https://pnpm.io/workspaces
 - **TanStack Router**: https://tanstack.com/router/latest
 - **TanStack Query**: https://tanstack.com/query/latest
+- **TanStack Form**: https://tanstack.com/form/latest
 - **Mantine UI**: https://mantine.dev/
 - **Tailwind CSS**: https://tailwindcss.com/
+- **Phosphor Icons**: https://phosphoricons.com/
+- **Vite**: https://vitejs.dev/
 
 ---
 
 ## Repository
 
-Check out the full implementation at: [Your Repository URL]
+Check out the full implementation at: [https://github.com/khanhspring/monorepo-ui-starter]
 
 Feel free to use this starter as a foundation for your next project, and contribute improvements back to the community!
 
 ---
 
-*Last updated: November 2025*
+*Last updated: November 27, 2025*
 *Built with ❤️ for the frontend community*
 

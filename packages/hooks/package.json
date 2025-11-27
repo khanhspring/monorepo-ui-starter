@@ -5,7 +5,8 @@
   "type": "module",
   "exports": {
     "./lib": "./src/lib/index.ts",
-    "./queries": "./src/queries/index.ts"
+    "./queries": "./src/queries/index.ts",
+    "./mutations": "./src/mutations/index.ts"
   },
   "scripts": {
     "lint": "eslint ."
