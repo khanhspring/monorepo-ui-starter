@@ -5,7 +5,8 @@
   "type": "module",
   "exports": {
     "./globals.css": "./src/globals.css",
-    "./atoms": "./src/atoms/index.ts"
+    "./atoms": "./src/atoms/index.ts",
+    "./molecules": "./src/molecules/index.ts"
   },
   "scripts": {
     "lint": "eslint .",
@@ -18,10 +19,12 @@
   "dependencies": {
     "@mantine/core": "^8.3.8",
     "@mantine/hooks": "^8.3.8",
+    "@mantine/notifications": "^8.3.9",
     "@phosphor-icons/react": "^2.1.10",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@tailwindcss/vite": "^4.1.17",
+    "@tanstack/react-form": "^1.26.0",
     "tailwind-merge": "^3.4.0",
     "tailwind-variants": "^3.2.2",
     "tailwindcss": "^4.1.17",

@@ -51,7 +51,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <UIProvider>
+        <UIProvider withNotifications>
           <AppRouter/>
         </UIProvider>
       </AuthProvider>

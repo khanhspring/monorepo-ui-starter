@@ -5,7 +5,7 @@ import {
 } from '@mantine/core';
 import { forwardRef } from 'react';
 
-type ButtonProps = Omit<MButtonProps, 'classNames'>;
+export type ButtonProps = Omit<MButtonProps, 'classNames'>;
 
 const Button = createPolymorphicComponent<'button', ButtonProps>(
   forwardRef<HTMLButtonElement, ButtonProps>(({ ...props }, ref) => (
