@@ -5,7 +5,8 @@
   "type": "module",
   "exports": {
     "./globals.css": "./src/globals.css",
-    "./atoms": "./src/atoms/index.ts"
+    "./atoms": "./src/atoms/index.ts",
+    "./molecules": "./src/molecules/index.ts"
   },
   "scripts": {
     "lint": "eslint .",
