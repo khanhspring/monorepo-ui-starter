@@ -54,7 +54,12 @@ export default function UIProvider({children, withToaster}: Props) {
         <MantineProvider theme={theme}>
             {children}
             {withToaster && (
-              <Toaster />
+              <Toaster
+                  toastOptions={{
+                      className: '!px-2.5 !py-1.5 !rounded-xl text-base dark:!bg-zinc-800 dark:!text-white shadow-lg',
+                  }}
+                  containerClassName="hello"
+              />
             )}
         </MantineProvider>
     );

@@ -11,3 +11,4 @@ export { default as Icon } from './Icon';
 export * from './Icon';
 export { default as UIProvider } from './UIProvider';
 export * from 'react-hot-toast';
+export { useMantineColorScheme as useColorScheme  } from '@mantine/core';

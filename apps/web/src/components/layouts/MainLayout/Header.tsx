@@ -3,6 +3,7 @@ import {Button} from "@repo/ui/atoms";
 import {useAuth} from "@repo/ui/contexts";
 import LanguageMenu from "./LanguageMenu";
 import {Trans} from "@lingui/react/macro";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Header() {
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function Header() {
   }
 
   return (
-    <header className="border-b border-gray-200">
+    <header className="border-b border-gray-200 dark:border-gray-800">
       <div className="container mx-auto flex gap-10 items-center py-4 px-5">
         <div className="flex gap-2 items-center">
           <img src="/logo.svg" alt="Logo" className="w-7 h-7"/>
@@ -34,6 +35,7 @@ export default function Header() {
         </div>
         <div className="flex gap-3 items-center">
           <LanguageMenu />
+          <ThemeSwitcher />
           <Button onClick={handleLogout} size="xs">
             <Trans>Logout</Trans>
           </Button>
