@@ -4,12 +4,22 @@ import './styles/globals.css'
 import {UIProvider} from "@repo/ui/atoms";
 import {createRouter, RouterProvider} from "@tanstack/react-router";
 import {routeTree} from './routeTree.gen';
-import {ACCESS_TOKEN_KEY, AuthProvider} from "./context/auth";
-import {useAuth} from "./hooks";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {APIClient} from "@repo/api-client";
 import {getCookie} from "@repo/utils";
 import {setApiClient} from "@repo/hooks/lib";
+import {AuthProvider, useAuth} from "@repo/ui/contexts";
+import {ACCESS_TOKEN_KEY} from "@repo/types";
+import {i18n} from "@lingui/core";
+import {I18nProvider} from "@lingui/react";
+import {messages as enMessages} from "./locales/en/messages";
+import {messages as viMessages} from "./locales/vi/messages";
+
+i18n.load({
+  en: enMessages,
+  vi: viMessages,
+});
+i18n.activate("vi");
 
 const apiClient = new APIClient({
   baseUrl: import.meta.env.VITE_API_URL,
@@ -44,17 +54,19 @@ declare module '@tanstack/react-router' {
 
 function AppRouter() {
   const auth = useAuth();
-  return <RouterProvider router={router} context={{auth}} />
+  return <RouterProvider router={router} context={{auth}}/>
 }
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <UIProvider withNotifications>
-          <AppRouter/>
-        </UIProvider>
-      </AuthProvider>
-    </QueryClientProvider>
+    <I18nProvider i18n={i18n}>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <UIProvider withToaster>
+            <AppRouter/>
+          </UIProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </I18nProvider>
   </StrictMode>,
 )

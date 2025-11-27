@@ -1,8 +1,7 @@
 import * as React from 'react'
-import {ReactNode, useCallback, useEffect, useState} from 'react'
+import {ReactNode, useCallback, useContext, useEffect, useState} from 'react'
 import {deleteCookie, getCookie, setCookie} from "@repo/utils";
-
-export const ACCESS_TOKEN_KEY = 'access_token';
+import {ACCESS_TOKEN_KEY} from "@repo/types";
 
 export interface AuthContext {
   isAuthenticated: boolean
@@ -12,7 +11,11 @@ export interface AuthContext {
 
 export const AuthContext = React.createContext<AuthContext | null>(null)
 
-export function AuthProvider({ children }: { children: ReactNode }) {
+type Props = {
+  children: ReactNode;
+}
+
+export function AuthProvider({ children }: Props) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
   const logout = useCallback(async () => {
@@ -35,4 +38,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       {children}
     </AuthContext.Provider>
   )
+}
+
+export function useAuth() {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider')
+  }
+  return context
 }

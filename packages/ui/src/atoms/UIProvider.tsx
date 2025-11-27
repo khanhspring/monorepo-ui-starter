@@ -1,6 +1,6 @@
 import {createTheme, MantineProvider} from "@mantine/core";
 import type {ReactNode} from "react";
-import {Notifications} from "@mantine/notifications";
+import {Toaster} from "react-hot-toast";
 
 const theme = createTheme({
     colors: {
@@ -46,15 +46,15 @@ const theme = createTheme({
 
 type Props = {
     children: ReactNode;
-    withNotifications?: boolean;
+    withToaster?: boolean;
 };
 
-export default function UIProvider({children, withNotifications}: Props) {
+export default function UIProvider({children, withToaster}: Props) {
     return (
         <MantineProvider theme={theme}>
             {children}
-            {withNotifications && (
-                <Notifications position="top-center" />
+            {withToaster && (
+              <Toaster />
             )}
         </MantineProvider>
     );

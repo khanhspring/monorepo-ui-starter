@@ -1,7 +1,11 @@
+import {Trans} from "@lingui/react/macro";
+
 export default function Home() {
   return (
     <div>
-      This is the Home page.
+      <Trans>
+        Welcome to the Home Page!
+      </Trans>
     </div>
   );
 }

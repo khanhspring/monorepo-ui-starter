@@ -1,6 +1,6 @@
 import {useNavigate, useRouter} from "@tanstack/react-router";
 import {Button} from "@repo/ui/atoms";
-import {useAuth} from "../../hooks";
+import {useAuth} from "@repo/ui/contexts";
 
 type Props = {
   redirect?: string;

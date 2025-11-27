@@ -1,7 +1,7 @@
 import {Link, useRouter} from "@tanstack/react-router";
 import {Icon} from "@repo/ui/atoms";
 import {useAppForm, FormContainer} from "@repo/ui/molecules";
-import {notifications} from '@repo/ui/atoms';
+import {toast} from '@repo/ui/atoms';
 import {useCreateUser} from "@repo/hooks/mutations";
 
 const GENDER_OPTIONS = [
@@ -22,20 +22,9 @@ export default function AddUser() {
         },
         onSubmit: async ({value}) => {
             console.log(JSON.stringify(value, null, 2));
-            notifications.show({
-                id: 'create-user-success',
-                title: "Notification",
-                message: `Creating user...`,
-                loading: true,
-            });
+            toast.loading('Saving...', { id: 'create-user' });
             const res = await createUser(value);
-            notifications.update({
-                id: 'create-user-success',
-                loading: false,
-                color: 'teal',
-                title: 'Success',
-                message: `User has been created successfully! ID: ${res.id}`,
-            });
+            toast.success(`Saved successfully!`, { id: 'create-user' })
             router.navigate({ to: "/users"});
         },
     });

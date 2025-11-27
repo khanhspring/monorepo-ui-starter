@@ -1,6 +1,8 @@
 import {Link, useNavigate, useRouter} from "@tanstack/react-router";
 import {Button} from "@repo/ui/atoms";
-import {useAuth} from "../../../hooks";
+import {useAuth} from "@repo/ui/contexts";
+import LanguageMenu from "./LanguageMenu";
+import {Trans} from "@lingui/react/macro";
 
 export default function Header() {
   const router = useRouter();
@@ -23,11 +25,18 @@ export default function Header() {
           <span className="font-bold text-lg">UI Starter</span>
         </div>
         <div className="flex-1 flex gap-5 items-center">
-          <Link to="/">Home</Link>
-          <Link to="/users">Users</Link>
+          <Link to="/">
+            <Trans>Home</Trans>
+          </Link>
+          <Link to="/users">
+            <Trans>Users</Trans>
+          </Link>
         </div>
-        <div>
-          <Button onClick={handleLogout} size="xs">Logout</Button>
+        <div className="flex gap-3 items-center">
+          <LanguageMenu />
+          <Button onClick={handleLogout} size="xs">
+            <Trans>Logout</Trans>
+          </Button>
         </div>
       </div>
     </header>

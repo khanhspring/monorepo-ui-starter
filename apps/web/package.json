@@ -7,13 +7,17 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "extract": "lingui extract",
+    "compile": "lingui compile --typescript"
   },
   "peerDependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "dependencies": {
+    "@lingui/core": "^5.6.0",
+    "@lingui/react": "^5.6.0",
     "@phosphor-icons/react": "^2.1.10",
     "@repo/api-client": "workspace:*",
     "@repo/eslint-config": "workspace:*",
@@ -34,6 +38,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@lingui/babel-plugin-lingui-macro": "^5.6.0",
+    "@lingui/cli": "^5.6.0",
+    "@lingui/vite-plugin": "^5.6.0",
     "@tanstack/router-plugin": "^1.139.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
